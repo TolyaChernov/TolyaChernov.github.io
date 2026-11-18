@@ -1,0 +1,62 @@
+:root {
+  color-scheme: dark;
+
+  --bg: #0b0d12;
+  --surface: #12151c;
+  --surface-2: #181c26;
+  --border: #232836;
+  --border-strong: #32384a;
+  --text: #d7dbe6;
+  --muted: #8a91a6;
+
+  /* Fill / large accents. Small text uses --accent-text (AA). */
+  --accent: #6b5ce7;
+  --accent-text: #8b7ff0;
+  --accent-2: #3dbea8;
+  --warn: #f5c451;
+
+  --c-fastik: #6b5ce7;
+  --c-cutstock: #3dbea8;
+  --c-diary: #ff7043;
+
+  --on-accent: #ffffff;
+  --on-accent-2: #0b0d12;
+  --on-diary: #0b0d12;
+
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-pill: 999px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  --max-w: 1100px;
+  --header-h: 3.5rem;
+
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.75rem;
+  --fs-3xl: clamp(1.75rem, 3vw, 2.25rem);
+
+  --lh: 1.6;
+  --lh-tight: 1.35;
+
+  --dur: 450ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --shadow-window: 0 12px 40px rgb(0 0 0 / 0.35);
+  --focus: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent-text);
+}

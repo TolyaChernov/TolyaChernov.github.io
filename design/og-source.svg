@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#ffffff" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0b0d12"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect x="80" y="90" width="1040" height="450" rx="16" fill="#12151c" stroke="#232836" stroke-width="2"/>
+  <circle cx="118" cy="128" r="8" fill="#ff5f57"/>
+  <circle cx="146" cy="128" r="8" fill="#febc2e"/>
+  <circle cx="174" cy="128" r="8" fill="#28c840"/>
+  <text x="210" y="134" fill="#8a91a6" font-family="JetBrains Mono, Consolas, monospace" font-size="22">~/whoami</text>
+  <text x="120" y="230" fill="#8b7ff0" font-family="JetBrains Mono, Consolas, monospace" font-size="28">$ whoami</text>
+  <text x="120" y="310" fill="#d7dbe6" font-family="JetBrains Mono, Consolas, monospace" font-size="56" font-weight="700">Anatoly Chernov</text>
+  <text x="120" y="370" fill="#8a91a6" font-family="Inter, Arial, sans-serif" font-size="28">mobile · desktop · web</text>
+  <text x="120" y="450" fill="#3dbea8" font-family="JetBrains Mono, Consolas, monospace" font-size="24">t.me/anatoli_chernov</text>
+  <rect x="980" y="400" width="88" height="88" rx="18" fill="#181c26" stroke="#32384a" stroke-width="2"/>
+  <text x="1024" y="456" text-anchor="middle" fill="#8b7ff0" font-family="JetBrains Mono, Consolas, monospace" font-size="28" font-weight="700">AC</text>
+</svg>
