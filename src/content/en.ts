@@ -22,7 +22,7 @@ export const en: Dictionary = {
     name: 'Anatoly Chernov',
     role: 'software developer',
     tagline:
-      'I build mobile and desktop apps. Web too — but the focus is software you keep on your machine.',
+      'Custom software — mobile, desktop, and web: CRM, ops tools, accounting, online and offline.',
     telegram: 'Message on Telegram',
     github: 'GitHub',
   },
@@ -30,15 +30,12 @@ export const en: Dictionary = {
     prompt: '~/about',
     command: 'cat about.md',
     paragraphs: [
-      // TODO(owner)
-      'I ship apps I use myself: local file search, stock calculators, a food diary.',
-      '3+ years of experience. Prefer local, offline-first products where data stays with the user.',
-      'I know web end-to-end, but the focus is Flutter and desktop with Tauri / Wails.',
+      'I build software to order: mobile, desktop, and web — online and offline. CRM, internal tools, production, inventory, staff accounting, reporting, and day-to-day utilities.',
+      'From scenarios to release. Stack by the job: Flutter, Tauri / Wails, web. Solo or in a team — owning the product or joining an existing codebase.',
     ],
     stats: [
       { value: '3+', label: 'years of experience' }, // TODO(owner)
       { value: '3', label: 'platforms' },
-      { value: 'PDF→XLSX', label: 'parsers in Fastik' },
     ],
   },
   services: {

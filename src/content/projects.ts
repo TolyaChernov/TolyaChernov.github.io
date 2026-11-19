@@ -4,7 +4,10 @@ export const projects = [
     accent: 'var(--c-diary)',
     platform: 'mobile',
     stack: ['Flutter', 'Dart', 'Riverpod', 'Drift', 'SQLite'],
-    links: {} as {
+    links: {
+      download:
+        'https://github.com/TolyaChernov/downloads/releases/latest/download/calorie-calculator.apk',
+    } as {
       download?: string
       repo?: string
       store?: string
@@ -20,7 +23,10 @@ export const projects = [
     accent: 'var(--c-fastik)',
     platform: 'desktop',
     stack: ['Tauri 2', 'Rust', 'Vue 3', 'TypeScript', 'SQLite'],
-    links: {} as {
+    links: {
+      download:
+        'https://github.com/TolyaChernov/downloads/releases/latest/download/fastik.exe',
+    } as {
       download?: string
       repo?: string
       store?: string
@@ -36,7 +42,10 @@ export const projects = [
     accent: 'var(--c-cutstock)',
     platform: 'desktop',
     stack: ['Wails', 'Go', 'Vue 3', 'TypeScript', 'SQLite'],
-    links: {} as {
+    links: {
+      download:
+        'https://github.com/TolyaChernov/downloads/releases/latest/download/cut_stock.exe',
+    } as {
       download?: string
       repo?: string
       store?: string

@@ -10,13 +10,17 @@ const props = defineProps<{
   text: ProjectText
 }>()
 
-const linkEntries = computed(() => {
+const download = computed(() => {
+  const href = props.project.links.download
+  return href
+    ? { href, label: props.text.links.download }
+    : null
+})
+
+const secondaryLinks = computed(() => {
   const links = props.project.links
   const labels = props.text.links
   const out: { key: string; href: string; label: string }[] = []
-  if (links.download) {
-    out.push({ key: 'download', href: links.download, label: labels.download })
-  }
   if (links.repo) {
     out.push({ key: 'repo', href: links.repo, label: labels.repo })
   }
@@ -60,9 +64,19 @@ function onLink(key: string): void {
           {{ tech }}
         </li>
       </ul>
-      <div v-if="linkEntries.length" class="links">
+      <div v-if="download || secondaryLinks.length" class="links">
         <a
-          v-for="link in linkEntries"
+          v-if="download"
+          class="download-btn"
+          :href="download.href"
+          :aria-label="download.label"
+          target="_blank"
+          rel="noopener noreferrer"
+          @click="onLink('download')"
+          >{{ download.label }}</a
+        >
+        <a
+          v-for="link in secondaryLinks"
           :key="link.key"
           class="link"
           :href="link.href"
@@ -104,7 +118,8 @@ function onLink(key: string): void {
 }
 
 .body {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-3);
   padding: var(--space-5);
   flex: 1;
@@ -134,12 +149,58 @@ function onLink(key: string): void {
 .links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-3);
-  margin-top: var(--space-1);
+  margin-top: auto;
+  padding-top: var(--space-1);
+}
+
+.download-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 180ms var(--ease);
+}
+
+.download-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: inset 0 0 0 1px var(--accent-text);
+  transition: opacity 180ms var(--ease);
+}
+
+.download-btn:hover {
+  transform: translateY(-1px);
+}
+
+.download-btn:hover::before {
+  opacity: 1;
 }
 
 .link {
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
+  color: var(--accent-text);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 </style>
