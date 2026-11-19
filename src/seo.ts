@@ -1,4 +1,10 @@
-import { absoluteUrl, langPath, projects, SITE } from './content/projects'
+import {
+  absoluteUrl,
+  langPath,
+  projects,
+  SITE,
+  type Project,
+} from './content/projects'
 import { en } from './content/en'
 import { ru } from './content/ru'
 import type { Lang } from './content/types'
@@ -15,7 +21,7 @@ export function buildJsonLd(lang: Lang): Record<string, unknown> {
   const personId = `${SITE.siteUrl}/#person`
   const pageUrl = absoluteUrl(langPath(lang))
 
-  const softwareApps = projects.map((project) => {
+  const softwareApps = (projects as readonly Project[]).map((project) => {
     const text = dict.projects.items[project.id]
     const download = project.links.download
     const shot = project.screenshots[0]

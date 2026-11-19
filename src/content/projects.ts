@@ -94,7 +94,10 @@ export const projects = [
 ] as const
 
 export type ProjectId = (typeof projects)[number]['id']
-export type Project = (typeof projects)[number]
+/** Widen `release` so optional `version` stays on the type when omitted in data. */
+export type Project = Omit<(typeof projects)[number], 'release'> & {
+  release: ProjectRelease
+}
 
 export const SITE = {
   nameRu: 'Анатолий Чернов',
