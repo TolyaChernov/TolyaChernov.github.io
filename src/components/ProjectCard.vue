@@ -2,19 +2,20 @@
 import { computed } from 'vue'
 import type { Project } from '../content/projects'
 import type { ProjectText } from '../content/types'
+import { useLang } from '../composables/useLang'
 import { track } from '../analytics'
-import ProjectScreenshot from './ProjectScreenshot.vue'
+import ProjectGallery from './ProjectGallery.vue'
 
 const props = defineProps<{
   project: Project
   text: ProjectText
 }>()
 
+const { t } = useLang()
+
 const download = computed(() => {
   const href = props.project.links.download
-  return href
-    ? { href, label: props.text.links.download }
-    : null
+  return href ? { href, label: props.text.links.download } : null
 })
 
 const secondaryLinks = computed(() => {
@@ -30,16 +31,53 @@ const secondaryLinks = computed(() => {
   return out
 })
 
+const releaseLine = computed(() => {
+  const release = props.project.release
+  const labels = t.value.projects.release
+  const size = labels.size.replace('{size}', String(release.sizeMb))
+  const os = labels.os[release.os]
+  const parts = [size, os]
+  if (release.version) {
+    parts.unshift(labels.version.replace('{version}', release.version))
+  }
+  return parts.join(' · ')
+})
+
+const installNote = computed(() => {
+  const notes = t.value.projects.installNote
+  return notes[props.project.release.os]
+})
+
+function downloadAria(): string {
+  return `${props.text.links.download} ${props.text.name}`
+}
+
+function linkAria(label: string): string {
+  return `${label} ${props.text.name}`
+}
+
+function onDownload(): void {
+  track('project_download', {
+    project: props.project.id,
+    os: props.project.release.os,
+    version: props.project.release.version ?? '',
+  })
+}
+
 function onLink(key: string): void {
   track('project_link', { project: props.project.id, link: key })
+}
+
+function onInstallToggle(e: Event): void {
+  const el = e.target as HTMLDetailsElement
+  if (el.open) {
+    track('install_note_open', { project: props.project.id })
+  }
 }
 </script>
 
 <template>
-  <article
-    class="card window"
-    :style="{ '--project-accent': project.accent }"
-  >
+  <article class="card window" :style="{ '--project-accent': project.accent }">
     <div class="window-chrome">
       <span class="window-dot" /><span class="window-dot" /><span
         class="window-dot"
@@ -47,9 +85,9 @@ function onLink(key: string): void {
       <span class="window-title">{{ text.name }}</span>
     </div>
 
-    <ProjectScreenshot
+    <ProjectGallery
       :project="project"
-      :alt="text.screenshotAlt"
+      :name="text.name"
       :placeholder="text.placeholder"
     />
 
@@ -69,23 +107,37 @@ function onLink(key: string): void {
           v-if="download"
           class="download-btn"
           :href="download.href"
-          :aria-label="download.label"
+          :aria-label="downloadAria()"
           target="_blank"
           rel="noopener noreferrer"
-          @click="onLink('download')"
-          >{{ download.label }}</a
+          @click="onDownload"
         >
+          {{ download.label }}
+          <span class="sr-only">{{ t.a11y.newTab }}</span>
+        </a>
         <a
           v-for="link in secondaryLinks"
           :key="link.key"
           class="link"
           :href="link.href"
+          :aria-label="linkAria(link.label)"
           target="_blank"
           rel="noopener noreferrer"
           @click="onLink(link.key)"
-          >{{ link.label }}</a
         >
+          {{ link.label }}
+          <span class="sr-only">{{ t.a11y.newTab }}</span>
+        </a>
       </div>
+      <p v-if="download" class="release mono muted">{{ releaseLine }}</p>
+      <details v-if="download" class="install" @toggle="onInstallToggle">
+        <summary>{{ t.projects.installNote.summary }}</summary>
+        <p>{{ installNote }}</p>
+        <p v-if="project.release.sha256" class="hash mono">
+          <span class="hash-label">{{ t.projects.installNote.sha256 }}</span>
+          <code>{{ project.release.sha256 }}</code>
+        </p>
+      </details>
     </div>
   </article>
 </template>
@@ -202,5 +254,42 @@ function onLink(key: string): void {
 
 .link:hover {
   text-decoration: underline;
+}
+
+.release {
+  margin: 0;
+  font-size: var(--fs-xs);
+}
+
+.install {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.install summary {
+  cursor: pointer;
+  color: var(--accent-text);
+  font-family: var(--font-mono);
+}
+
+.install p {
+  margin: var(--space-2) 0 0;
+  line-height: var(--lh);
+}
+
+.hash {
+  word-break: break-all;
+}
+
+.hash-label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--muted);
+}
+
+.hash code {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text);
 }
 </style>

@@ -9,6 +9,23 @@
       content="Разработчик ПО: Flutter, десктоп (Tauri, Wails) и веб. Портфолио и контакты — Telegram."
     />
     <link rel="canonical" href="https://tolyachernov.github.io/" />
+    <!--app-hreflang-->
+    <link
+      rel="alternate"
+      hreflang="ru"
+      href="https://tolyachernov.github.io/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://tolyachernov.github.io/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://tolyachernov.github.io/"
+    />
+    <!--/app-hreflang-->
     <meta name="theme-color" content="#0b0d12" />
     <meta name="color-scheme" content="dark" />
 
@@ -37,24 +54,15 @@
       name="twitter:description"
       content="Разработчик ПО: Flutter, десктоп (Tauri, Wails) и веб. Портфолио и контакты — Telegram."
     />
-    <meta name="twitter:image" content="https://tolyachernov.github.io/og.png" />
+    <meta
+      name="twitter:image"
+      content="https://tolyachernov.github.io/og.png"
+    />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Анатолий Чернов",
-        "alternateName": "Anatoly Chernov",
-        "url": "https://tolyachernov.github.io/",
-        "jobTitle": "Software Developer",
-        "sameAs": [
-          "https://github.com/TolyaChernov",
-          "https://t.me/anatoli_chernov"
-        ]
-      }
-    </script>
+    <!--app-jsonld-->
+    <!--/app-jsonld-->
   </head>
   <body>
     <noscript>
@@ -66,9 +74,10 @@
           или посмотрите
           <a href="https://github.com/TolyaChernov">GitHub</a>.
         </p>
+        <p><a href="/en/">English version</a></p>
       </main>
     </noscript>
-    <div id="app"></div>
+    <div id="app"><!--app-html--><!--/app-html--></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

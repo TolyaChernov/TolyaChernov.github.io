@@ -42,11 +42,9 @@ onBeforeUnmount(() => {
       <BrandMark :title="t.header.brandAria" />
 
       <nav class="nav" :aria-label="t.header.navLabel">
-        <a
-          href="#projects"
-          :class="{ active: active === 'projects' }"
-          >{{ t.header.navProjects }}</a
-        >
+        <a href="#projects" :class="{ active: active === 'projects' }">{{
+          t.header.navProjects
+        }}</a>
         <a href="#stack" :class="{ active: active === 'stack' }">{{
           t.header.navStack
         }}</a>

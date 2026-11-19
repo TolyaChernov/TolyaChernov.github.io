@@ -6,7 +6,12 @@ const { t } = useLang()
 </script>
 
 <template>
-  <section class="section" aria-labelledby="services-heading" v-reveal>
+  <section
+    id="services"
+    class="section"
+    aria-labelledby="services-heading"
+    v-reveal
+  >
     <div class="container">
       <SectionHeading
         id="services-heading"

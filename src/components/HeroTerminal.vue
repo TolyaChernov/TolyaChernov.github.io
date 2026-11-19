@@ -23,12 +23,7 @@ const { shown, done } = useTyping(command)
         <div class="body">
           <p class="line mono" :aria-label="t.hero.command">
             <span class="typed" aria-hidden="true">{{ shown }}</span>
-            <span
-              v-if="!done"
-              class="cursor-blink"
-              aria-hidden="true"
-              >▍</span
-            >
+            <span v-if="!done" class="cursor-blink" aria-hidden="true">▍</span>
           </p>
 
           <div class="output" :class="{ show: done }">

@@ -14,9 +14,15 @@ const copyright = computed(() =>
   <footer class="footer">
     <div class="container row">
       <p class="copy muted">{{ copyright }}</p>
-      <a class="source" :href="SITE.repoUrl" target="_blank" rel="noopener noreferrer">{{
-        t.footer.source
-      }}</a>
+      <a
+        class="source"
+        :href="SITE.repoUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ t.footer.source }}
+        <span class="sr-only">{{ t.a11y.newTab }}</span>
+      </a>
       <p class="exit mono muted">{{ t.footer.exit }}</p>
     </div>
   </footer>

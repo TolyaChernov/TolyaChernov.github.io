@@ -1,6 +1,5 @@
 import type { Dictionary } from './types'
 
-/** TODO(owner): проверить и поправить все тексты о себе */
 export const ru: Dictionary = {
   meta: {
     title: 'Анатолий Чернов — мобильная и десктоп-разработка',
@@ -20,7 +19,7 @@ export const ru: Dictionary = {
     windowTitle: '~/whoami',
     command: '$ whoami',
     name: 'Анатолий Чернов',
-    role: 'software developer',
+    role: 'Flutter / Tauri / Wails разработчик',
     tagline:
       'Пишу приложения на заказ — мобильные, десктоп и веб: CRM, учёт, производство, онлайн и офлайн.',
     telegram: 'Написать в Telegram',
@@ -30,13 +29,11 @@ export const ru: Dictionary = {
     prompt: '~/about',
     command: 'cat about.md',
     paragraphs: [
-      'Работаю на заказ: мобильные, десктопные и веб-приложения — онлайн и офлайн. CRM, кабинеты, производство, склад, учёт персонала, отчётность и рабочие утилиты.',
-      'Беру задачу от сценариев до релиза. Стек под продукт: Flutter, Tauri / Wails, веб. Работаю самостоятельно или в команде — веду проект сам или подключаюсь к уже идущему.',
+      'Я Анатолий, делаю приложения под задачу: мобильные на Flutter, десктопные на Tauri и Wails, веб на Vue. Чаще всего это рабочие инструменты: учёт, склад, производство, отчётность, CRM.',
+      'Веду задачу от сценария до релиза: уточняю, как приложением будут пользоваться, собираю прототип, довожу до сборки и поддерживаю после запуска. Умею делать оффлайн приложения с локальной базой.',
+      'Мои продукты Fastik, Cut Stock и Дневник питания выложены в открытый доступ: их можно скачать и попробовать ниже.',
     ],
-    stats: [
-      { value: '3+', label: 'года опыта' }, // TODO(owner)
-      { value: '3', label: 'платформы' }, // mobile / desktop / web
-    ],
+    stats: [{ value: '3', label: 'приложения в открытом доступе' }],
   },
   services: {
     prompt: '~/services',
@@ -68,7 +65,6 @@ export const ru: Dictionary = {
         name: 'Дневник питания',
         platformLabel: 'Мобильное · Flutter',
         description:
-          // TODO(owner)
           'Учёт еды с локальной базой и веб-базой продуктов. Офлайн-первый дневник без лишнего шума.',
         screenshotAlt: 'Скриншот приложения Дневник питания',
         placeholder: 'screenshot pending — diary',
@@ -82,7 +78,6 @@ export const ru: Dictionary = {
         name: 'Fastik',
         platformLabel: 'Десктоп · Tauri',
         description:
-          // TODO(owner)
           'Локальный поиск по имени и содержимому: операторы И / ИЛИ / НЕ, фильтры, индексация. Читает PDF, Excel, Word, HTML.',
         screenshotAlt: 'Скриншот приложения Fastik',
         placeholder: 'screenshot pending — fastik',
@@ -94,9 +89,8 @@ export const ru: Dictionary = {
       },
       cutstock: {
         name: 'Cut Stock',
-        platformLabel: 'Десктоп · Windows / Linux',
+        platformLabel: 'Десктоп · Windows',
         description:
-          // TODO(owner)
           'Помощник технолога: лист, пруток, труба, фасонный прокат. Допуски и посадки ISO 286 / ГОСТ 25346, справочники, сохранённые расчёты.',
         screenshotAlt: 'Скриншот приложения Cut Stock',
         placeholder: 'screenshot pending — cut stock',
@@ -106,6 +100,30 @@ export const ru: Dictionary = {
           store: 'Магазин',
         },
       },
+    },
+    release: {
+      version: 'v{version}',
+      size: '{size} МБ',
+      os: {
+        windows: 'Windows',
+        android: 'Android',
+      },
+    },
+    installNote: {
+      summary: 'Предупреждение при запуске?',
+      windows:
+        'Файл не подписан сертификатом. Windows SmartScreen может показать предупреждение — нажмите «Подробнее», затем «Выполнить в любом случае».',
+      android:
+        'Разрешите установку из неизвестных источников для браузера или файлового менеджера. Play Protect может запросить подтверждение.',
+      sha256: 'SHA-256',
+    },
+    gallery: {
+      open: 'Открыть скриншот',
+      close: 'Закрыть',
+      prev: 'Предыдущий скриншот',
+      next: 'Следующий скриншот',
+      thumb: 'Скриншот {n}',
+      of: '{name}: скриншот {n} из {total}',
     },
   },
   stack: {
@@ -152,6 +170,7 @@ export const ru: Dictionary = {
     skip: 'К содержимому',
     langSwitch: 'Выбор языка',
     closePalette: 'Закрыть палитру',
+    newTab: '(откроется в новой вкладке)',
   },
   notFound: {
     title: '404 — страница не найдена',

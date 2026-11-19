@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { track } from '../analytics'
+import { track, type EventMap } from '../analytics'
+import { useLang } from '../composables/useLang'
+
+type Trackable = {
+  [K in keyof EventMap]: EventMap[K] extends undefined ? K : never
+}[keyof EventMap]
 
 const props = withDefaults(
   defineProps<{
     href: string
     label: string
     variant?: 'primary' | 'ghost' | 'command'
-    event?: string
+    event?: Trackable
     external?: boolean
   }>(),
   {
@@ -14,6 +19,8 @@ const props = withDefaults(
     external: true,
   },
 )
+
+const { t } = useLang()
 
 function onClick(): void {
   if (props.event) track(props.event)
@@ -31,6 +38,7 @@ function onClick(): void {
     @click="onClick"
   >
     <slot>{{ label }}</slot>
+    <span v-if="external" class="sr-only">{{ t.a11y.newTab }}</span>
   </a>
 </template>
 

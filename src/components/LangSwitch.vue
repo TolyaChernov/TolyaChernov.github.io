@@ -1,32 +1,39 @@
 <script setup lang="ts">
 import { useLang } from '../composables/useLang'
 import type { Lang } from '../content/types'
+import { langPath } from '../content/projects'
 
 const { lang, setLang, t } = useLang()
 
-function select(code: Lang): void {
-  setLang(code)
+function onClick(e: MouseEvent, code: Lang): void {
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
+    return
+  }
+  e.preventDefault()
+  setLang(code, { via: 'switch' })
 }
 </script>
 
 <template>
   <div class="switch" role="group" :aria-label="t.a11y.langSwitch">
-    <button
-      type="button"
+    <a
       class="opt"
-      :aria-pressed="lang === 'ru'"
-      @click="select('ru')"
+      :href="langPath('ru')"
+      hreflang="ru"
+      :aria-current="lang === 'ru' ? 'page' : undefined"
+      @click="onClick($event, 'ru')"
     >
       RU
-    </button>
-    <button
-      type="button"
+    </a>
+    <a
       class="opt"
-      :aria-pressed="lang === 'en'"
-      @click="select('en')"
+      :href="langPath('en')"
+      hreflang="en"
+      :aria-current="lang === 'en' ? 'page' : undefined"
+      @click="onClick($event, 'en')"
     >
       EN
-    </button>
+    </a>
   </div>
 </template>
 
@@ -50,9 +57,10 @@ function select(code: Lang): void {
   padding: 0.35rem 0.65rem;
   border-radius: var(--radius-pill);
   cursor: pointer;
+  text-decoration: none;
 }
 
-.opt[aria-pressed='true'] {
+.opt[aria-current='page'] {
   background: var(--surface-2);
   color: var(--text);
   box-shadow: inset 0 0 0 1px var(--border-strong);

@@ -1,6 +1,5 @@
 import type { Dictionary } from './types'
 
-/** TODO(owner): review and edit all copy about yourself */
 export const en: Dictionary = {
   meta: {
     title: 'Anatoly Chernov — mobile & desktop development',
@@ -20,7 +19,7 @@ export const en: Dictionary = {
     windowTitle: '~/whoami',
     command: '$ whoami',
     name: 'Anatoly Chernov',
-    role: 'software developer',
+    role: 'Flutter / Tauri / Wails developer',
     tagline:
       'Custom software — mobile, desktop, and web: CRM, ops tools, accounting, online and offline.',
     telegram: 'Message on Telegram',
@@ -30,13 +29,11 @@ export const en: Dictionary = {
     prompt: '~/about',
     command: 'cat about.md',
     paragraphs: [
-      'I build software to order: mobile, desktop, and web — online and offline. CRM, internal tools, production, inventory, staff accounting, reporting, and day-to-day utilities.',
-      'From scenarios to release. Stack by the job: Flutter, Tauri / Wails, web. Solo or in a team — owning the product or joining an existing codebase.',
+      'I am Anatoly. I build apps to order: mobile with Flutter, desktop with Tauri and Wails, web with Vue. Most often these are work tools — accounting, inventory, production, reporting, CRM.',
+      'I take a job from scenarios to release: clarify how people will use the app, ship a prototype, finish a build, and support it after launch. I am comfortable with offline-first apps and a local database.',
+      'Fastik, Cut Stock, and Food Diary are public — download them below and try them yourself.',
     ],
-    stats: [
-      { value: '3+', label: 'years of experience' }, // TODO(owner)
-      { value: '3', label: 'platforms' },
-    ],
+    stats: [{ value: '3', label: 'apps available to download' }],
   },
   services: {
     prompt: '~/services',
@@ -68,7 +65,6 @@ export const en: Dictionary = {
         name: 'Food Diary',
         platformLabel: 'Mobile · Flutter',
         description:
-          // TODO(owner)
           'Meal tracking with a local database and a web product catalog. Offline-first, no clutter.',
         screenshotAlt: 'Food Diary app screenshot',
         placeholder: 'screenshot pending — diary',
@@ -82,7 +78,6 @@ export const en: Dictionary = {
         name: 'Fastik',
         platformLabel: 'Desktop · Tauri',
         description:
-          // TODO(owner)
           'Local search by name and content: AND / OR / NOT, filters, indexing. Reads PDF, Excel, Word, HTML.',
         screenshotAlt: 'Fastik app screenshot',
         placeholder: 'screenshot pending — fastik',
@@ -94,9 +89,8 @@ export const en: Dictionary = {
       },
       cutstock: {
         name: 'Cut Stock',
-        platformLabel: 'Desktop · Windows / Linux',
+        platformLabel: 'Desktop · Windows',
         description:
-          // TODO(owner)
           'Process-engineer helper: sheet, bar, tube, shaped stock. Fits & tolerances ISO 286 / GOST 25346, catalogs, saved calculations.',
         screenshotAlt: 'Cut Stock app screenshot',
         placeholder: 'screenshot pending — cut stock',
@@ -106,6 +100,30 @@ export const en: Dictionary = {
           store: 'Store',
         },
       },
+    },
+    release: {
+      version: 'v{version}',
+      size: '{size} MB',
+      os: {
+        windows: 'Windows',
+        android: 'Android',
+      },
+    },
+    installNote: {
+      summary: 'Warning when opening the file?',
+      windows:
+        'The file is not code-signed. Windows SmartScreen may show a warning — click More info, then Run anyway.',
+      android:
+        'Allow installs from unknown sources for your browser or file manager. Play Protect may ask for confirmation.',
+      sha256: 'SHA-256',
+    },
+    gallery: {
+      open: 'Open screenshot',
+      close: 'Close',
+      prev: 'Previous screenshot',
+      next: 'Next screenshot',
+      thumb: 'Screenshot {n}',
+      of: '{name}: screenshot {n} of {total}',
     },
   },
   stack: {
@@ -152,6 +170,7 @@ export const en: Dictionary = {
     skip: 'Skip to content',
     langSwitch: 'Language',
     closePalette: 'Close palette',
+    newTab: '(opens in a new tab)',
   },
   notFound: {
     title: '404 — page not found',

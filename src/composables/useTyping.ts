@@ -1,6 +1,7 @@
 import { onBeforeUnmount, onMounted, ref, watch, type Ref } from 'vue'
 
 function prefersReducedMotion(): boolean {
+  if (typeof window === 'undefined') return true
   try {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches
   } catch {
@@ -16,8 +17,9 @@ export function useTyping(
 ) {
   const speed = options.speed ?? 42
   const startDelay = options.startDelay ?? 280
-  const shown = ref('')
-  const done = ref(false)
+  const isSSR = import.meta.env.SSR
+  const shown = ref(isSSR ? text.value : '')
+  const done = ref(isSSR)
   let timer: ReturnType<typeof setTimeout> | undefined
   let index = 0
   let source = ''
@@ -58,19 +60,29 @@ export function useTyping(
     timer = setTimeout(tick, startDelay)
   }
 
-  onMounted(() => start(text.value))
+  if (!isSSR) {
+    onMounted(() => start(text.value))
 
-  watch(text, (value) => {
-    if (!done.value && !played.value) {
-      start(value)
-      return
-    }
-    // After first play, language switches update instantly without retyping.
-    shown.value = value
-    done.value = true
-  })
+    watch(text, (value) => {
+      if (!done.value && !played.value) {
+        start(value)
+        return
+      }
+      shown.value = value
+      done.value = true
+    })
 
-  onBeforeUnmount(clear)
+    onBeforeUnmount(clear)
+  } else {
+    watch(
+      text,
+      (value) => {
+        shown.value = value
+        done.value = true
+      },
+      { immediate: true },
+    )
+  }
 
   return { shown, done }
 }

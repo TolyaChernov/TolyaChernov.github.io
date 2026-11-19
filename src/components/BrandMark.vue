@@ -1,11 +1,17 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useLang } from '../composables/useLang'
+
 defineProps<{
   title: string
 }>()
+
+const { lang, langPath } = useLang()
+const home = computed(() => langPath(lang.value))
 </script>
 
 <template>
-  <a class="brand" href="#top" :aria-label="title">
+  <a class="brand" :href="home" :aria-label="title">
     <svg
       class="mark"
       viewBox="0 0 40 40"

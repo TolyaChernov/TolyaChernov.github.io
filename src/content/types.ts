@@ -54,6 +54,28 @@ export interface Dictionary {
     prompt: string
     command: string
     items: Record<ProjectId, ProjectText>
+    release: {
+      version: string
+      size: string
+      os: {
+        windows: string
+        android: string
+      }
+    }
+    installNote: {
+      summary: string
+      windows: string
+      android: string
+      sha256: string
+    }
+    gallery: {
+      open: string
+      close: string
+      prev: string
+      next: string
+      thumb: string
+      of: string
+    }
   }
   stack: {
     prompt: string
@@ -94,6 +116,7 @@ export interface Dictionary {
     skip: string
     langSwitch: string
     closePalette: string
+    newTab: string
   }
   notFound: {
     title: string

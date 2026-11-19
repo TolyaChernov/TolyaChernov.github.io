@@ -39,4 +39,9 @@ export const vReveal: Directive<HTMLElement> = {
   unmounted(el) {
     observer?.unobserve(el)
   },
+  getSSRProps() {
+    return {
+      class: 'reveal is-visible',
+    }
+  },
 }

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue'
-import { SITE } from '../content/projects'
+import { langPath, SITE } from '../content/projects'
 import { useLang } from '../composables/useLang'
 import { track } from '../analytics'
+import type { Lang } from '../content/types'
 
 const open = defineModel<boolean>('open', { default: false })
 
@@ -15,6 +16,7 @@ const input = ref<HTMLInputElement | null>(null)
 type Action = {
   id: string
   label: string
+  href?: string
   run: () => void
 }
 
@@ -37,6 +39,7 @@ const actions = computed<Action[]>(() => [
   {
     id: 'telegram',
     label: t.value.palette.items.telegram,
+    href: SITE.telegram,
     run: () => {
       track('click_telegram')
       window.open(SITE.telegram, '_blank', 'noopener,noreferrer')
@@ -45,6 +48,7 @@ const actions = computed<Action[]>(() => [
   {
     id: 'github',
     label: t.value.palette.items.github,
+    href: SITE.github,
     run: () => {
       track('click_github')
       window.open(SITE.github, '_blank', 'noopener,noreferrer')
@@ -53,12 +57,14 @@ const actions = computed<Action[]>(() => [
   {
     id: 'lang-ru',
     label: t.value.palette.items.langRu,
-    run: () => setLang('ru'),
+    href: langPath('ru'),
+    run: () => setLang('ru' satisfies Lang, { via: 'palette' }),
   },
   {
     id: 'lang-en',
     label: t.value.palette.items.langEn,
-    run: () => setLang('en'),
+    href: langPath('en'),
+    run: () => setLang('en' satisfies Lang, { via: 'palette' }),
   },
 ])
 
@@ -87,6 +93,7 @@ function close(): void {
 }
 
 function run(action: Action): void {
+  track('palette_action', { id: action.id })
   action.run()
   close()
 }
@@ -94,7 +101,10 @@ function run(action: Action): void {
 function onKey(e: KeyboardEvent): void {
   if (e.key === 'ArrowDown') {
     e.preventDefault()
-    active.value = Math.min(active.value + 1, Math.max(filtered.value.length - 1, 0))
+    active.value = Math.min(
+      active.value + 1,
+      Math.max(filtered.value.length - 1, 0),
+    )
   } else if (e.key === 'ArrowUp') {
     e.preventDefault()
     active.value = Math.max(active.value - 1, 0)

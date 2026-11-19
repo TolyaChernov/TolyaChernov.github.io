@@ -1,4 +1,3 @@
-/** TODO(owner): подтвердить список технологий */
 export const stackGroups = [
   {
     id: 'mobile',
