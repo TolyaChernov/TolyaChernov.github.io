@@ -1,13 +1,7 @@
 import { onBeforeUnmount, onMounted } from 'vue'
 import { track } from '../analytics'
 
-const SECTION_IDS = [
-  'projects',
-  'stack',
-  'contact',
-  'about',
-  'services',
-] as const
+const SECTION_IDS = ['projects', 'stack', 'contact', 'about'] as const
 
 export function useSectionTracking(): void {
   let observer: IntersectionObserver | null = null

@@ -15,7 +15,6 @@ import AboutSection from './components/AboutSection.vue'
 import ContactBlock from './components/ContactBlock.vue'
 import HeroTerminal from './components/HeroTerminal.vue'
 import ProjectsSection from './components/ProjectsSection.vue'
-import ServicesSection from './components/ServicesSection.vue'
 import StackSection from './components/StackSection.vue'
 
 const CommandPalette = defineAsyncComponent(
@@ -70,9 +69,8 @@ onBeforeUnmount(() => {
     <AppHeader @open-palette="openPalette('button')" />
     <main id="main">
       <HeroTerminal />
-      <AboutSection />
-      <ServicesSection />
       <ProjectsSection />
+      <AboutSection />
       <StackSection />
       <ContactBlock />
     </main>

@@ -2,9 +2,9 @@ import type { Dictionary } from './types'
 
 export const ru: Dictionary = {
   meta: {
-    title: 'Анатолий Чернов — мобильная и десктоп-разработка',
+    title: 'Анатолий Чернов — приложения для Windows, Linux и Android',
     description:
-      'Разработчик ПО: Flutter, десктоп (Tauri, Wails) и веб. Портфолио и контакты — Telegram.',
+      'Собственные приложения: Cut Stock, Fastik, Дневник питания. Скачать и связаться в Telegram.',
   },
   header: {
     navLabel: 'Основная навигация',
@@ -19,42 +19,17 @@ export const ru: Dictionary = {
     windowTitle: '~/whoami',
     command: '$ whoami',
     name: 'Анатолий Чернов',
-    role: 'Flutter / Tauri / Wails разработчик',
+    role: 'Windows · Linux · Android',
     tagline:
-      'Пишу приложения на заказ — мобильные, десктоп и веб: CRM, учёт, производство, онлайн и офлайн.',
-    telegram: 'Написать в Telegram',
+      'Разрабатываю приложения для Windows, Linux и Android. Здесь собраны мои проекты — от инженерных расчётов и поиска по файлам до дневника питания.',
+    projects: 'Посмотреть проекты',
     github: 'GitHub',
   },
   about: {
     prompt: '~/about',
     command: 'cat about.md',
     paragraphs: [
-      'Я Анатолий, делаю приложения под задачу: мобильные на Flutter, десктопные на Tauri и Wails, веб на Vue. Чаще всего это рабочие инструменты: учёт, склад, производство, отчётность, CRM.',
-      'Веду задачу от сценария до релиза: уточняю, как приложением будут пользоваться, собираю прототип, довожу до сборки и поддерживаю после запуска. Умею делать оффлайн приложения с локальной базой.',
-      'Мои продукты Fastik, Cut Stock и Дневник питания выложены в открытый доступ: их можно скачать и попробовать ниже.',
-    ],
-    stats: [{ value: '3', label: 'приложения в открытом доступе' }],
-  },
-  services: {
-    prompt: '~/services',
-    command: 'ls services/',
-    items: [
-      {
-        name: 'mobile/',
-        description: 'Мобильные приложения на Flutter',
-      },
-      {
-        name: 'desktop/',
-        description: 'Десктоп: Tauri, Wails, Windows и Linux',
-      },
-      {
-        name: 'web/',
-        description: 'Веб: фронтенд и бэкенд',
-      },
-      {
-        name: 'support/',
-        description: 'Доработка и сопровождение существующих продуктов',
-      },
+      'Я Анатолий. Разрабатываю собственные мобильные и десктопные приложения. Среди моих проектов — инженерные инструменты, локальный поиск по файлам и дневник питания. Мне интересны приложения, которые могут работать офлайн и хранить данные локально.',
     ],
   },
   projects: {
@@ -63,9 +38,9 @@ export const ru: Dictionary = {
     items: {
       diary: {
         name: 'Дневник питания',
-        platformLabel: 'Мобильное · Flutter',
+        platformLabel: 'Android',
         description:
-          'Учёт еды с локальной базой и веб-базой продуктов. Офлайн-первый дневник без лишнего шума.',
+          'Запись приёмов пищи и учёт калорий с локальным хранением данных.',
         screenshotAlt: 'Скриншот приложения Дневник питания',
         placeholder: 'screenshot pending — diary',
         links: {
@@ -76,9 +51,9 @@ export const ru: Dictionary = {
       },
       fastik: {
         name: 'Fastik',
-        platformLabel: 'Десктоп · Tauri',
+        platformLabel: 'Windows',
         description:
-          'Локальный поиск по имени и содержимому: операторы И / ИЛИ / НЕ, фильтры, индексация. Читает PDF, Excel, Word, HTML.',
+          'Поиск файлов по имени и содержимому, в том числе в PDF, Word и Excel.',
         screenshotAlt: 'Скриншот приложения Fastik',
         placeholder: 'screenshot pending — fastik',
         links: {
@@ -89,9 +64,9 @@ export const ru: Dictionary = {
       },
       cutstock: {
         name: 'Cut Stock',
-        platformLabel: 'Десктоп · Windows',
+        platformLabel: 'Windows',
         description:
-          'Помощник технолога: лист, пруток, труба, фасонный прокат. Допуски и посадки ISO 286 / ГОСТ 25346, справочники, сохранённые расчёты.',
+          'Инженерные расчёты для листа, прутка, трубы и фасонного проката, справочник допусков и посадок.',
         screenshotAlt: 'Скриншот приложения Cut Stock',
         placeholder: 'screenshot pending — cut stock',
         links: {
@@ -140,8 +115,8 @@ export const ru: Dictionary = {
     prompt: '~/contact',
     command: './connect',
     windowTitle: 'contact.sh',
-    heading: 'Готов обсудить задачу',
-    lead: 'Коротко опишите, что нужно — отвечу в Telegram.',
+    heading: 'Связаться со мной',
+    lead: 'Есть вопрос по приложению или идея для совместного проекта? Напишите мне в Telegram',
     telegramCommand: 'contact --telegram @anatoli_chernov',
     github: 'github.com/TolyaChernov',
   },

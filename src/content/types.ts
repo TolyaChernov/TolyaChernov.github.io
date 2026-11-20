@@ -36,19 +36,13 @@ export interface Dictionary {
     name: string
     role: string
     tagline: string
-    telegram: string
+    projects: string
     github: string
   }
   about: {
     prompt: string
     command: string
     paragraphs: string[]
-    stats: { value: string; label: string }[]
-  }
-  services: {
-    prompt: string
-    command: string
-    items: { name: string; description: string }[]
   }
   projects: {
     prompt: string

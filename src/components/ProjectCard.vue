@@ -85,6 +85,11 @@ function onInstallToggle(e: Event): void {
       <span class="window-title">{{ text.name }}</span>
     </div>
 
+    <div class="intro">
+      <h3 class="title">{{ text.name }}</h3>
+      <p class="desc">{{ text.description }}</p>
+    </div>
+
     <ProjectGallery
       :project="project"
       :name="text.name"
@@ -92,11 +97,6 @@ function onInstallToggle(e: Event): void {
     />
 
     <div class="body">
-      <div class="meta">
-        <h3 class="title">{{ text.name }}</h3>
-        <p class="platform mono muted">{{ text.platformLabel }}</p>
-      </div>
-      <p class="desc">{{ text.description }}</p>
       <ul class="stack">
         <li v-for="tech in project.stack" :key="tech" class="pill">
           {{ tech }}
@@ -129,6 +129,7 @@ function onInstallToggle(e: Event): void {
           <span class="sr-only">{{ t.a11y.newTab }}</span>
         </a>
       </div>
+      <p class="platform mono muted">{{ text.platformLabel }}</p>
       <p v-if="download" class="release mono muted">{{ releaseLine }}</p>
       <details v-if="download" class="install" @toggle="onInstallToggle">
         <summary>{{ t.projects.installNote.summary }}</summary>
@@ -169,6 +170,12 @@ function onInstallToggle(e: Event): void {
   opacity: 0.7;
 }
 
+.intro {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+}
+
 .body {
   display: flex;
   flex-direction: column;
@@ -179,15 +186,17 @@ function onInstallToggle(e: Event): void {
 
 .title {
   font-size: var(--fs-lg);
+  margin: 0;
 }
 
 .platform {
-  margin-top: var(--space-1);
+  margin: 0;
   font-size: var(--fs-xs);
   color: var(--project-accent);
 }
 
 .desc {
+  margin: 0;
   color: var(--text);
   font-size: var(--fs-sm);
 }

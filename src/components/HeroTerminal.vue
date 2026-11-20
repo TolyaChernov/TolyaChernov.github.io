@@ -32,9 +32,9 @@ const { shown, done } = useTyping(command)
             <p class="tagline">{{ t.hero.tagline }}</p>
             <div class="actions">
               <CtaButton
-                :href="SITE.telegram"
-                :label="t.hero.telegram"
-                event="click_telegram"
+                href="#projects"
+                :label="t.hero.projects"
+                :external="false"
               />
               <CtaButton
                 :href="SITE.github"
